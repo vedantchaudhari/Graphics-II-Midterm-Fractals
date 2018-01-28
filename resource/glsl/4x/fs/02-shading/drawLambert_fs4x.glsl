@@ -32,10 +32,32 @@
 //	5) calculate Lambertian shading model 
 //	6) assign result to output color
 
+// (1)
+in vec2 vPassTexcoord;
+in vec3 vPassNormal;
+in vec3 vPassLight;
+
+// (2)
+uniform sampler2D uTex_dm;
+
 out vec4 rtFragColor;
 
 void main()
 {
 	// DUMMY OUTPUT: all fragments are OPAQUE GREEN
-	rtFragColor = vec4(0.0, 1.0, 0.0, 1.0);
+	// rtFragColor = vec4(0.0, 1.0, 0.0, 1.0);
+
+	// (3)
+	vec4 diffuseSample = texture(uTex_dm, vPassTexcoord);
+
+	// (4)
+	vec3 L = normalize(vPassLight);
+	vec3 N = normalize(vPassNormal);
+	float diffuse = dot(N, L);
+
+	// (5)
+	vec3 Lambert = diffuseSample.rgb * diffuse;
+
+	// (6)
+	rtFragColor = vec4(Lambert, diffuseSample.a);
 }
