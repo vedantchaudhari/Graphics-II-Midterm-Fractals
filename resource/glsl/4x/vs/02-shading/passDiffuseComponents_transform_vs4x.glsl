@@ -36,8 +36,28 @@ layout (location = 0) in vec4 aPosition;
 layout (location = 2) in vec3 aNormal;
 
 uniform mat4 uMVP;
+// (2)
+uniform vec4 uLightPos_obj;
+
+// (3a)
+// per-vertex
+//out float vShading;
+
+// (3b)
+out vec3 vPassNormal;
+out vec3 vPassLight;
 
 void main()
 {
 	gl_Position = uMVP * aPosition;
+
+	// (4a)
+	//vec3 L = normalize(uLightPos_obj - aPosition).xyz;
+	//vec3 N = normalize(aNormal);
+	//float diffuse = dot(N, L);
+	//vShading = diffuse;
+
+	// (4)
+	vPassNormal = aNormal;
+	vPassLight = uLightPos_obj.xyz - aPosition.xyz;
 }

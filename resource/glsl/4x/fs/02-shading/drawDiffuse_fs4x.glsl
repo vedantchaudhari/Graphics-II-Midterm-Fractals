@@ -29,10 +29,25 @@
 //	2) calculate diffuse coefficient
 //	3) copy diffuse coefficient to output as opaque grayscale color
 
+// (1a)
+//in float vShading;
+
+// (1b)
+in vec3 vPassNormal;
+in vec3 vPassLight;
+
 out vec4 rtFragColor;
 
 void main()
 {
 	// DUMMY OUTPUT: all fragments are OPAQUE RED
-	rtFragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	//rtFragColor = vec4(1.0, 0.0, 0.0, 1.0);
+
+	// (2)
+	vec3 L = normalize(vPassLight);
+	vec3 N = normalize(vPassNormal);
+	float diffuse = dot(N, L);
+
+	// (3)
+	rtFragColor = vec4(diffuse, diffuse, diffuse, 1.0);
 }
