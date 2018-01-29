@@ -442,6 +442,8 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 	//	- hint: the 'unique' shaders are already loaded; 
 	//		they are the building blocks for your programs
 
+	// HW2 programs
+
 	// 02 programs
 	// Phong shading
 	currentDemoProg = demoState->prog_drawPhong;

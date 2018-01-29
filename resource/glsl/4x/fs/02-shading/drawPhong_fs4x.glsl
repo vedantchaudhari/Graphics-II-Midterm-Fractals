@@ -79,5 +79,5 @@ void main()
 
 	// (6)
 	rtFragColor = vec4(Phong, diffuseSample.a);
-	rtFragColor = vec4(specular, specular, specular, 1.0);
+	// rtFragColor = vec4(specular, specular, specular, 1.0);
 }
