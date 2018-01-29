@@ -97,6 +97,8 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 
 		// ****TO-DO: 
 		//	- add more texture paths corresponding with your new texture objects
+		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_DIFF.jpg",
+		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_SPEC.jpg",
 	};
 	const unsigned int numTextures = sizeof(texFiles) / sizeof(const char *);
 
@@ -132,7 +134,15 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 
 	// ****TO-DO: 
 	//	- initialize your new textures here
-
+	
+	// Wood diffuse map
+	a3textureActivate(demoState->tex_wood_dm, a3tex_unit00);
+	a3textureChangeRepeatMode(a3tex_repeatNormal, a3tex_repeatClamp);
+	a3textureChangeFilterMode(a3tex_filterLinear);
+	// Wood specular map
+	a3textureActivate(demoState->tex_wood_sm, a3tex_unit00);
+	a3textureChangeRepeatMode(a3tex_repeatNormal, a3tex_repeatClamp);
+	a3textureChangeFilterMode(a3tex_filterLinear);
 
 	// done
 	a3textureDeactivate(a3tex_unit00);
@@ -363,6 +373,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 			//		- ...hint: you're probably good on the vertex shaders
 
 			// vertex shaders
+			// HW2
+			a3_Shader passCelComponents_transform_vs[1];
+
 			// 02
 			a3_Shader passPhongComponents_transform_vs[1];
 			a3_Shader passLambertComponents_transform_vs[1];
@@ -373,6 +386,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 			a3_Shader passColor_transform_vs[1];
 
 			// fragment shaders
+			// HW2
+			a3_Shader drawCel_fs[1];
+
 			// 02
 			a3_Shader drawPhong_fs[1];
 			a3_Shader drawLambert_fs[1];
@@ -402,6 +418,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		//	- reiterating on above notice: no encoded shaders allowed!
 
 		// vs
+		// HW2
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/HW2/passCelComponents_transform_vs4x.glsl" } },
+
 		// 02
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passPhongComponents_transform_vs4x.glsl" } },
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passLambertComponents_transform_vs4x.glsl" } },
@@ -412,6 +431,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passColor_transform_vs4x.glsl" } },
 
 		// fs
+		// HW2
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/HW2/drawCel_fs4x.glsl" } },
+
 		// 02
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawPhong_fs4x.glsl" } },
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawLambert_fs4x.glsl" } },
@@ -443,6 +465,10 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 	//		they are the building blocks for your programs
 
 	// HW2 programs
+	currentDemoProg = demoState->prog_drawCel;
+	a3shaderProgramCreate(currentDemoProg->program);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passCelComponents_transform_vs);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawCel_fs);
 
 	// 02 programs
 	// Phong shading
@@ -1091,6 +1117,7 @@ void a3demo_render(const a3_DemoState *demoState)
 			// ****TO-DO: 
 			//	- add more demo mode names; 
 			//		if you have fewer names than modes it might crash here
+			"Cel shading program",
 		};
 
 

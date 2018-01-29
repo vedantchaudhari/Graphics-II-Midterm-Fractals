@@ -175,10 +175,12 @@ extern "C"
 					tex_sky_water[1],					// skybox with water
 					tex_stone_dm[1],					// stone diffuse texture
 					tex_earth_dm[1],					// earth diffuse texture
-					tex_earth_sm[1];					// earth specular texture
+					tex_earth_sm[1],					// earth specular texture
 
 				// ****TO-DO: 
 				//	- declare more textures
+					tex_wood_dm[1],						// wood diffuse texture
+					tex_wood_sm[1];						// wood specular texture
 			};
 		};
 
@@ -227,6 +229,8 @@ extern "C"
 				a3_DemoStateShaderProgram
 					// ****TO-DO: 
 					//	- declare more programs
+
+					prog_drawCel[1],					// draw cel shading model
 
 					prog_drawPhong[1],					// draw Phong shading model
 					prog_drawLambert[1],				// draw Lambert shading model
