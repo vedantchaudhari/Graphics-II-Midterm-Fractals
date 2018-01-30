@@ -97,6 +97,8 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 
 		// ****TO-DO: 
 		//	- add more texture paths corresponding with your new texture objects
+
+		// Wood specular and diffuse map
 		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_DIFF.jpg",
 		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_SPEC.jpg",
 	};
@@ -428,11 +430,11 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passTexcoord_transform_vs4x.glsl" } },
 		// base
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passthru_transform_vs4x.glsl" } },
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passColor_transform_vs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/psassColor_transform_vs4x.glsl" } },
 
 		// fs
 		// HW2
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/HW2/drawCel_fs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/fs/HW2/drawCel_fs4x.glsl" } },
 
 		// 02
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawPhong_fs4x.glsl" } },
@@ -663,7 +665,7 @@ void a3demo_initScene(a3_DemoState *demoState)
 
 	// demo modes
 	demoState->demoMode = 0;
-	demoState->demoModeCount = 4;	// ****TO-DO: change mode count to show off all programs
+	demoState->demoModeCount = 5;	// ****TO-DO: change mode count to show off all programs
 
 
 	// initialize other objects 
