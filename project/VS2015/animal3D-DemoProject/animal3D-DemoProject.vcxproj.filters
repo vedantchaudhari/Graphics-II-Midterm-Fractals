@@ -55,6 +55,12 @@
     <Filter Include="Resource Files\A3_DEMO\glsl\4x\vs\02-shading">
       <UniqueIdentifier>{3f45b2e1-bdac-4173-9c1e-f02188974a66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\A3_DEMO\glsl\4x\fs\HW2">
+      <UniqueIdentifier>{68e213f5-b318-4b2e-a0fd-54cd1e562ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\A3_DEMO\glsl\4x\vs\HW2">
+      <UniqueIdentifier>{ee93b893-1a13-45c4-aed2-c5ff4175ceed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_src_win\main_dll.c">
@@ -120,6 +126,12 @@
     </None>
     <None Include="..\..\..\resource\glsl\4x\fs\02-shading\drawDiffuse_fs4x.glsl">
       <Filter>Resource Files\A3_DEMO\glsl\4x\fs\02-shading</Filter>
+    </None>
+    <None Include="..\..\..\resource\glsl\4x\fs\HW2\drawCel_fs4x.glsl">
+      <Filter>Resource Files\A3_DEMO\glsl\4x\fs\HW2</Filter>
+    </None>
+    <None Include="..\..\..\resource\glsl\4x\vs\HW2\passCelComponents_transform_vs4x.glsl">
+      <Filter>Resource Files\A3_DEMO\glsl\4x\vs\HW2</Filter>
     </None>
   </ItemGroup>
 </Project>

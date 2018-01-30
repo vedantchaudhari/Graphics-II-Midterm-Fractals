@@ -288,12 +288,15 @@ void a3demo_loadGeometry(a3_DemoState *demoState)
 	sharedVertexStorage = 0;
 
 
+	// ATTENTION: this fixes the black lines error I was having, ask dan about this
+	/*
 	// create vertex formats and drawables
 	// axes
 	vao = demoState->vao_position_color;
 	a3geometryGenerateVertexArray(vao, sceneShapesData + 0, vbo_ibo, sharedVertexStorage);
 	currentDrawable = demoState->draw_axes;
 	sharedVertexStorage += a3geometryGenerateDrawable(currentDrawable, sceneShapesData + 0, vao, vbo_ibo, sceneCommonIndexFormat, 0, 0);
+	*/
 
 	// grid: position attribute only
 	// overlay objects are also just position
@@ -434,7 +437,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// fs
 		// HW2
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/fs/HW2/drawCel_fs4x.glsl" } },
+		{ a3shader_fragment,		1, { "../../../../resource/glsl/4x/fs/HW2/drawCel_fs4x.glsl" } },
 
 		// 02
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawPhong_fs4x.glsl" } },
