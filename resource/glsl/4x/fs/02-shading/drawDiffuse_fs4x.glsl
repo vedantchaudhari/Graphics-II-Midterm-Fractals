@@ -1,3 +1,5 @@
+// This file was modified by Vedant Chaudhari with permission from author
+
 /*
 	Copyright 2011-2018 Daniel S. Buckstein
 
