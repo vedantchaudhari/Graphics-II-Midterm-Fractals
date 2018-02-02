@@ -103,6 +103,9 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 		// Wood specular and diffuse map
 		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_DIFF.jpg",
 		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_SPEC.jpg",
+
+		// Ramp Texture
+		"../../../../resource/tex/rampmaps/ramp.png",
 	};
 	const unsigned int numTextures = sizeof(texFiles) / sizeof(const char *);
 
@@ -145,6 +148,11 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 	a3textureChangeFilterMode(a3tex_filterLinear);
 	// Wood specular map
 	a3textureActivate(demoState->tex_wood_sm, a3tex_unit00);
+	a3textureChangeRepeatMode(a3tex_repeatNormal, a3tex_repeatClamp);
+	a3textureChangeFilterMode(a3tex_filterLinear);
+
+	// Ramp map
+	a3textureActivate(demoState->tex_ramp, a3tex_unit00);
 	a3textureChangeRepeatMode(a3tex_repeatNormal, a3tex_repeatClamp);
 	a3textureChangeFilterMode(a3tex_filterLinear);
 
@@ -291,14 +299,14 @@ void a3demo_loadGeometry(a3_DemoState *demoState)
 
 
 	// ATTENTION: this fixes the black lines error I was having, ask dan about this
-	/*
+	
 	// create vertex formats and drawables
 	// axes
 	vao = demoState->vao_position_color;
 	a3geometryGenerateVertexArray(vao, sceneShapesData + 0, vbo_ibo, sharedVertexStorage);
 	currentDrawable = demoState->draw_axes;
 	sharedVertexStorage += a3geometryGenerateDrawable(currentDrawable, sceneShapesData + 0, vao, vbo_ibo, sceneCommonIndexFormat, 0, 0);
-	*/
+	
 
 	// grid: position attribute only
 	// overlay objects are also just position
@@ -360,6 +368,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		"uTex_dm",
 		"uTex_sm",
 		"uColor",
+
+		// Ramp Texture
+		"uTex_rm",
 	};
 
 
@@ -435,7 +446,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passTexcoord_transform_vs4x.glsl" } },
 		// base
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passthru_transform_vs4x.glsl" } },
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/psassColor_transform_vs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passColor_transform_vs4x.glsl" } },
 
 		// fs
 		// HW2
@@ -565,6 +576,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// ****TO-DO: 
 		//	- get locations and set default values for any newly added uniforms
+		if ((uLocation = currentDemoProg->uTex_rm) >= 0)
+			a3shaderUniformSendInt(a3unif_single, uLocation, 1, defaultTexUnits + 2);
+
 	}
 
 	//done
@@ -1007,6 +1021,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uEyePos_obj, 1, eyePos_obj.v);
 	a3textureActivate(demoState->tex_stone_dm, a3tex_unit00);
 	a3textureActivate(demoState->tex_stone_dm, a3tex_unit01);
+	a3textureActivate(demoState->tex_ramp, a3tex_unit02);
 	a3vertexActivateAndRenderDrawable(currentDrawable);
 
 	// sphere
@@ -1028,6 +1043,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uEyePos_obj, 1, eyePos_obj.v);
 	a3textureActivate(demoState->tex_earth_dm, a3tex_unit00);
 	a3textureActivate(demoState->tex_earth_sm, a3tex_unit01);
+	a3textureActivate(demoState->tex_ramp, a3tex_unit02);
 	a3vertexActivateAndRenderDrawable(currentDrawable);
 
 	// cylinder
@@ -1046,6 +1062,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uEyePos_obj, 1, eyePos_obj.v);
 	a3textureActivate(demoState->tex_checker, a3tex_unit00);
 	a3textureActivate(demoState->tex_checker, a3tex_unit01);
+	a3textureActivate(demoState->tex_ramp, a3tex_unit02);
 	a3vertexActivateAndRenderDrawable(currentDrawable);
 
 	// torus
@@ -1064,6 +1081,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uEyePos_obj, 1, eyePos_obj.v);
 	a3textureActivate(demoState->tex_earth_dm, a3tex_unit00);
 	a3textureActivate(demoState->tex_earth_sm, a3tex_unit01);
+	a3textureActivate(demoState->tex_ramp, a3tex_unit02);
 	a3vertexActivateAndRenderDrawable(currentDrawable);
 	
 	// teapot
@@ -1085,6 +1103,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uEyePos_obj, 1, eyePos_obj.v);
 	a3textureActivate(demoState->tex_checker, a3tex_unit00);
 	a3textureActivate(demoState->tex_checker, a3tex_unit01);
+	a3textureActivate(demoState->tex_ramp, a3tex_unit02);
 	a3vertexActivateAndRenderDrawable(currentDrawable);
 
 

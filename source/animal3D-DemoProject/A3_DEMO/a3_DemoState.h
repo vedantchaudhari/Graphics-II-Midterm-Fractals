@@ -182,7 +182,9 @@ extern "C"
 				// ****TO-DO: 
 				//	- declare more textures
 					tex_wood_dm[1],						// wood diffuse texture
-					tex_wood_sm[1];						// wood specular texture
+					tex_wood_sm[1],						// wood specular texture
+
+					tex_ramp[1];
 			};
 		};
 

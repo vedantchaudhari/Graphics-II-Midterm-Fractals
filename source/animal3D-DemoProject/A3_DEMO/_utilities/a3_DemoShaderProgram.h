@@ -71,7 +71,9 @@ extern "C"
 					// common fragment shader uniforms
 					uTex_dm,					// diffuse map/surface texture
 					uTex_sm,					// specular map/reflective color
-					uColor;						// uniform color
+					uColor,						// uniform color
+
+					uTex_rm;					// Ramp texture
 			};
 		};
 	};
