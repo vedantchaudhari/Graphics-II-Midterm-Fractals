@@ -233,8 +233,8 @@ extern "C"
 				a3_DemoStateShaderProgram
 					// ****TO-DO: 
 					//	- declare more programs
-
-					prog_drawCel[1],					// draw cel shading model
+					prog_drawJulia[1],					// draw Julia Fractal
+					prog_drawMandlebrot[1],				// draw Mandlebrot Fractal
 
 					prog_drawPhong[1],					// draw Phong shading model
 					prog_drawLambert[1],				// draw Lambert shading model

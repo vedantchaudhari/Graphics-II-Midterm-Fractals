@@ -392,26 +392,18 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 			// vertex shaders
 			// HW2
-			a3_Shader passCelComponents_transform_vs[1];
+			a3_Shader passJulia_transform_vs[1];
+			a3_Shader passMandlebrotComponents_transform_vs[1];
 
-			// 02
-			a3_Shader passPhongComponents_transform_vs[1];
-			a3_Shader passLambertComponents_transform_vs[1];
-			a3_Shader passDiffuseComponents_transform_vs[1];
-			a3_Shader passTexcoord_transform_vs[1];
 			// base
 			a3_Shader passthru_transform_vs[1];
 			a3_Shader passColor_transform_vs[1];
 
 			// fragment shaders
 			// HW2
-			a3_Shader drawCel_fs[1];
+			a3_Shader drawJulia_fs[1];
+			a3_Shader drawMandlebrot_fs[1];
 
-			// 02
-			a3_Shader drawPhong_fs[1];
-			a3_Shader drawLambert_fs[1];
-			a3_Shader drawDiffuse_fs[1];
-			a3_Shader drawTexture_fs[1];
 			// base
 			a3_Shader drawColorUnif_fs[1];
 			a3_Shader drawColorAttrib_fs[1];
@@ -436,27 +428,19 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		//	- reiterating on above notice: no encoded shaders allowed!
 
 		// vs
-		// HW2
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/HW2/passCelComponents_transform_vs4x.glsl" } },
+		// Fractals
+		{ a3shader_vertex,		1,{ "../../../../resource/glsl/4x/vs/Fractals/passJulia_vs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passMandlebrotComponents_transform_vs4x.glsl" } },
 
-		// 02
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passPhongComponents_transform_vs4x.glsl" } },
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passLambertComponents_transform_vs4x.glsl" } },
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passDiffuseComponents_transform_vs4x.glsl" } },
-		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/02-shading/passTexcoord_transform_vs4x.glsl" } },
 		// base
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passthru_transform_vs4x.glsl" } },
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passColor_transform_vs4x.glsl" } },
 
 		// fs
-		// HW2
-		{ a3shader_fragment,		1, { "../../../../resource/glsl/4x/fs/HW2/drawCel_fs4x.glsl" } },
+		// Fractals
+		{ a3shader_fragment,	1,{ "../../../../resource/glsl/4x/fs/Fractals/drawJulia_fs4x.glsl" } },	
+		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawMandlebrot_fs4x.glsl" } },
 
-		// 02
-		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawPhong_fs4x.glsl" } },
-		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawLambert_fs4x.glsl" } },
-		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawDiffuse_fs4x.glsl" } },
-		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/02-shading/drawTexture_fs4x.glsl" } },
 		// base
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/drawColorUnif_fs4x.glsl" } },
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/drawColorAttrib_fs4x.glsl" } },
@@ -483,36 +467,15 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 	//		they are the building blocks for your programs
 
 	// HW2 programs
-	currentDemoProg = demoState->prog_drawCel;
+	currentDemoProg = demoState->prog_drawJulia;
 	a3shaderProgramCreate(currentDemoProg->program);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passCelComponents_transform_vs);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawCel_fs);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passJulia_transform_vs);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawJulia_fs);
 
-	// 02 programs
-	// Phong shading
-	currentDemoProg = demoState->prog_drawPhong;
+	currentDemoProg = demoState->prog_drawMandlebrot;
 	a3shaderProgramCreate(currentDemoProg->program);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passPhongComponents_transform_vs);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawPhong_fs);
-
-	// Lambert shading
-	currentDemoProg = demoState->prog_drawLambert;
-	a3shaderProgramCreate(currentDemoProg->program);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passLambertComponents_transform_vs);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawLambert_fs);
-
-	// diffuse shading
-	currentDemoProg = demoState->prog_drawDiffuse;
-	a3shaderProgramCreate(currentDemoProg->program);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passDiffuseComponents_transform_vs);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawDiffuse_fs);
-
-	// texturing
-	currentDemoProg = demoState->prog_drawTexture;
-	a3shaderProgramCreate(currentDemoProg->program);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passTexcoord_transform_vs);
-	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawTexture_fs);
-
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passMandlebrotComponents_transform_vs);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawMandlebrot_fs);
 
 	// base programs
 	// color attrib program
@@ -684,7 +647,7 @@ void a3demo_initScene(a3_DemoState *demoState)
 
 	// demo modes
 	demoState->demoMode = 0;
-	demoState->demoModeCount = 5;	// ****TO-DO: change mode count to show off all programs
+	demoState->demoModeCount = 2;	// ****TO-DO: change mode count to show off all programs
 
 
 	// initialize other objects 
@@ -1135,15 +1098,11 @@ void a3demo_render(const a3_DemoState *demoState)
 	{
 		// display mode info
 		const char *demoModeText[] = {
-			"Texturing program",
-			"Diffuse shading program",
-			"Lambert shading program",
-			"Phong shading program",
-
 			// ****TO-DO: 
 			//	- add more demo mode names; 
 			//		if you have fewer names than modes it might crash here
-			"Cel shading program",
+			"Mandlebrot Fractal shading program",
+			"Julia Fractal shading program",
 		};
 
 
