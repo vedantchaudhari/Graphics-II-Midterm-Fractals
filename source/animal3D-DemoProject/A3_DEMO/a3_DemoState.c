@@ -90,10 +90,10 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 
 	// list of texture files to load
 	const char *texFiles[] = {
-		"../../../../resource/tex/sprite/checker.png",
+		"../../../../resource/tex/sprite/vaporwave.png",
 		"../../../../resource/tex/bg/sky_clouds.png",
 		"../../../../resource/tex/bg/sky_water.png",
-		"../../../../resource/tex/stone/stone_dm.png",
+		"../../../../resource/tex/stone/hazy-sunshine.png",
 		"../../../../resource/tex/earth/2k/earth_dm_2k.png",
 		"../../../../resource/tex/earth/2k/earth_sm_2k.png",
 

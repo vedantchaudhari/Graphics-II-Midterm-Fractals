@@ -73,7 +73,12 @@ extern "C"
 					uTex_sm,					// specular map/reflective color
 					uColor,						// uniform color
 
-					uTex_rm;					// Ramp texture
+					uTex_rm,					// Ramp texture
+
+					// Fractal shader uniforms
+					uTime,						// Current Time
+					uIter,						// Number of Iterations
+					uZoom;						// Level of zoom (stretch)
 			};
 		};
 	};

@@ -88,6 +88,8 @@ out vec4 rtFractal;
 
 #define ITERATIONS 1024
 
+// Stack Overflow
+
 void main()
 {
 	// Scale point by input transformation matrix
@@ -108,6 +110,7 @@ void main()
 		if (dot(point, point) > 16.0) // Try 16, force iterations that don't mean anything
 		{
 			float r = float(iter - 1) - log(((log(dot(point, point)))/log(2.0)))/log(2.0);
+			
 			// HSV coloring algorithm
 			color = vec3(0.95 + 0.12 * r, 1.0, 0.2 + 0.4 * (1.0 + sin(0.3 * r)));
 
