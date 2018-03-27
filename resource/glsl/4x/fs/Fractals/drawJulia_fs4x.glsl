@@ -62,7 +62,7 @@ vec2 fractal_deriv(vec2 p)
 // Compute Julia Fractal
 void main()
 {
-	vec4 diffuseSample = texture(uTex_dm, vPassTexcoord);
+	// vec4 diffuseSample = texture(uTex_dm, vPassTexcoord);
 	vec2 z = vPassTexcoord - 0.5;
 
 	for (int iter = 0; iter < ITERATIONS; iter++)
@@ -72,25 +72,28 @@ void main()
 
 	vec2 root1 = vec2( 1.0f, 0.0f);
     vec2 root2 = vec2(-1.0f/2.0f,  1.0f/2.0f * sqrt(3.0f));
-    vec2 root3 = vec2(-1.0f/2.0f, -1.0f/2.0f * sqrt(3.0f));
+    vec2 root3 = vec2(-1.0f/2.0f, -1.0f/2.0f * sqrt(7.0f));
 
-	diffuseSample.rgb = vec3(1.0, 0.0, 1.0);
+	// diffuseSample.rgb = vec3(1.0, 0.0, 1.0);
 
 	float rampCoord = abs(length(z-root1)) * 0.5 + 0.5;
 	vec2 rampUV = vec2(rampCoord, 0.5);
-	float rampSample = texture(uTex_rm, rampUV).r;
-	vec3 fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
-	rtFractal = vec4(fractsample, diffuseSample.a);
+	vec4 rampSample = texture(uTex_rm, rampUV);
+	//vec3 fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
+	//rtFractal = vec4(rampSample.rgb, diffuseSample.a);
+	rtFractal = rampSample;
 
-	rampCoord = abs(length(z-root2)) * 0.5 + 0.5;
+	rampCoord = abs(length(z-root2)) * 0.5 * 0.7;
 	rampUV = vec2(rampCoord, 0.5);
-	rampSample = texture(uTex_rm, rampUV).r;
-	fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
-	rtFractal = vec4(fractsample, diffuseSample.a);
+	rampSample = texture(uTex_rm, rampUV);
+	//fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
+	//rtFractal = vec4(rampSample.rgb, diffuseSample.a);
+	rtFractal = rampSample;
 
 	rampCoord = abs(length(z-root3)) * 0.5 + 0.5;
 	rampUV = vec2(rampCoord, 0.5);
-	rampSample = texture(uTex_rm, rampUV).r;
-	fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
-	rtFractal = vec4(fractsample, diffuseSample.a);
+	rampSample = texture(uTex_rm, rampUV);
+	//fractsample = diffuseSample.rgb * rampSample + vec3(0.01, 0.0, 0.02);
+	//rtFractal = vec4(rampSample, diffuseSample.a);
+	rtFractal = rampSample;
 }

@@ -105,7 +105,7 @@ void a3demo_loadTextures(a3_DemoState *demoState)
 		"../../../../resource/tex/woodmaps/AT_Wood_01_4096x2560_SPEC.jpg",
 
 		// Ramp Texture
-		"../../../../resource/tex/rampmaps/ramp.png",
+		"../../../../resource/tex/rampmaps/ramp7.png",
 	};
 	const unsigned int numTextures = sizeof(texFiles) / sizeof(const char *);
 
@@ -371,13 +371,18 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// Ramp Texture
 		"uTex_rm",
-	};
 
+		// Fractal uniforms
+		"uTime",
+		"uIter",
+		"uZoom",
+	};
 
 	// some default uniform values
 	const float defaultColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	const int defaultTexUnits[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
+	const float defaultFloat = 0.0f;
 
 	// list of all unique shaders
 	// this is a good idea to avoid multi-loading 
@@ -542,6 +547,11 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		if ((uLocation = currentDemoProg->uTex_rm) >= 0)
 			a3shaderUniformSendInt(a3unif_single, uLocation, 1, defaultTexUnits + 2);
 
+		// Fractal unifroms
+		if ((uLocation = currentDemoProg->uTime) >= 0)
+			a3shaderUniformSendFloat(a3unif_single, uLocation, 1, &defaultFloat);
+		if ((uLocation = currentDemoProg->uIter) >= 0)
+			a3shaderUniformSendFloat(a3unif_single, uLocation, 1, &defaultFloat);
 	}
 
 	//done
