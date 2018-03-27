@@ -415,7 +415,7 @@ A3API void a3test_mouseWheel(a3_DemoState *demoState, int delta, int cursorX, in
 	// can use this to change zoom
 	// zoom should be faster farther away
 	demoState->camera->fovy -= demoState->camera->ctrlZoomSpeed * (demoState->camera->fovy / a3realOneEighty) * (float)delta;
-	demoState->camera->fovy = a3clamp(demoState->camera->ctrlZoomSpeed, a3realOneEighty - demoState->camera->ctrlZoomSpeed, demoState->camera->fovy);
+	// demoState->camera->fovy = a3clamp(demoState->camera->ctrlZoomSpeed, a3realOneEighty - demoState->camera->ctrlZoomSpeed, demoState->camera->fovy);
 
 	a3real4x4MakePerspectiveProjection(demoState->camera->projectionMat.m, demoState->camera->projectionMatInv.m,
 		demoState->camera->fovy, demoState->camera->aspect, demoState->camera->znear, demoState->camera->zfar);
