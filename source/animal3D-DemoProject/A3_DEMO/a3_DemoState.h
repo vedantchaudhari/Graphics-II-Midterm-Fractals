@@ -121,6 +121,9 @@ extern "C"
 
 		unsigned int demoMode, demoModeCount;
 
+		// Fractal variables
+		unsigned int fract_iter, fract_iterMax;
+
 
 		// point light position for testing
 		// (initialized in 'init scene')

@@ -1,3 +1,5 @@
+// This file was modified by Vedant Chaudhari with permission from author
+
 /*
 	Copyright 2011-2018 Daniel S. Buckstein
 
@@ -371,6 +373,14 @@ A3API void a3test_keyCharPress(a3_DemoState *demoState, int asciiKey)
 	case ',':
 		demoState->demoMode = (demoState->demoMode + demoState->demoModeCount - 1) % demoState->demoModeCount;
 		break;
+
+		// Fractal case
+	case 'l':
+		demoState->fract_iter = (demoState->fract_iter + 1) % demoState->fract_iterMax;
+		break;
+	case 'k':
+		demoState->fract_iter = (demoState->fract_iter + demoState->fract_iterMax - 1) % demoState->fract_iterMax;
+		break;
 	}
 }
 
@@ -379,6 +389,16 @@ A3API void a3test_keyCharHold(a3_DemoState *demoState, int asciiKey)
 {
 	// persistent state update
 	a3keyboardSetStateASCII(demoState->keyboard, (char)asciiKey);
+
+	switch (asciiKey)
+	{
+		case 'l':
+			demoState->fract_iter = (demoState->fract_iter + 1) % demoState->fract_iterMax;
+			break;
+		case 'k':
+			demoState->fract_iter = (demoState->fract_iter + demoState->fract_iterMax - 1) % demoState->fract_iterMax;
+			break;
+	}
 }
 
 // mouse button is clicked

@@ -661,6 +661,9 @@ void a3demo_initScene(a3_DemoState *demoState)
 	demoState->demoMode = 0;
 	demoState->demoModeCount = 2;	// ****TO-DO: change mode count to show off all programs
 
+	// Initialize fractal variables
+	demoState->fract_iter = 0;
+	demoState->fract_iterMax = 2048;
 
 	// initialize other objects 
 	// e.g. light
@@ -933,15 +936,15 @@ void a3demo_render(const a3_DemoState *demoState)
 
 
 	// draw grid aligned to world
-	currentDemoProgram = demoState->prog_drawColorUnif;
-	a3shaderProgramActivate(currentDemoProgram->program);
-	currentDrawable = demoState->draw_grid;
-	modelViewProjectionMat = demoState->camera->viewProjectionMat;
-	if (useVerticalY)
-		a3real4x4ConcatL(modelViewProjectionMat.m, convertZ2Y.m);
-	a3shaderUniformSendFloatMat(a3unif_mat4, 0, currentDemoProgram->uMVP, 1, modelViewProjectionMat.mm);
-	a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uColor, 1, gridColor);
-	a3vertexActivateAndRenderDrawable(currentDrawable);
+	//currentDemoProgram = demoState->prog_drawColorUnif;
+	//a3shaderProgramActivate(currentDemoProgram->program);
+	//currentDrawable = demoState->draw_grid;
+	//modelViewProjectionMat = demoState->camera->viewProjectionMat;
+	//if (useVerticalY)
+	//	a3real4x4ConcatL(modelViewProjectionMat.m, convertZ2Y.m);
+	//a3shaderUniformSendFloatMat(a3unif_mat4, 0, currentDemoProgram->uMVP, 1, modelViewProjectionMat.mm);
+	//a3shaderUniformSendFloat(a3unif_vec4, currentDemoProgram->uColor, 1, gridColor);
+	//a3vertexActivateAndRenderDrawable(currentDrawable);
 
 
 	// draw skybox with texture, inverted
@@ -979,7 +982,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	//		are required for the active program
 	//	- you may choose a different way to select your active program; 
 	//		the above line selects the program based on the current mode
-
+	a3shaderUniformSendInt(a3unif_single, currentDemoProgram->uIter, 1, &demoState->fract_iter);
 
 	// ground
 	currentDrawable = demoState->draw_groundPlane;
@@ -1085,10 +1088,10 @@ void a3demo_render(const a3_DemoState *demoState)
 	glDisable(GL_DEPTH_TEST);
 
 	// draw coordinate axes in front of everything
-	currentDemoProgram = demoState->prog_drawColor;
-	a3shaderProgramActivate(currentDemoProgram->program);
-	currentDrawable = demoState->draw_axes;
-	a3vertexActivateDrawable(currentDrawable);
+	//currentDemoProgram = demoState->prog_drawColor;
+	//a3shaderProgramActivate(currentDemoProgram->program);
+	//currentDrawable = demoState->draw_axes;
+	//a3vertexActivateDrawable(currentDrawable);
 
 	// center of world
 	modelViewProjectionMat = demoState->camera->viewProjectionMat;
@@ -1114,7 +1117,7 @@ void a3demo_render(const a3_DemoState *demoState)
 			//	- add more demo mode names; 
 			//		if you have fewer names than modes it might crash here
 			"Mandlebrot Fractal shading program",
-			"Julia Fractal shading program",
+			"Newton Fractal with Julia set shading program",		// ****TO-DO: Find correct name
 		};
 
 
@@ -1124,6 +1127,9 @@ void a3demo_render(const a3_DemoState *demoState)
 			"Demo mode (%u / %u): ", demoState->demoMode + 1, demoState->demoModeCount);
 		a3textDraw(demoState->text, -0.98f, +0.80f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
 			"    %s", demoModeText[demoState->demoMode]);
+
+		a3textDraw(demoState->text, +0.48f, +0.90f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
+			"Iterations: %u", demoState->fract_iter);
 
 
 		// display controls

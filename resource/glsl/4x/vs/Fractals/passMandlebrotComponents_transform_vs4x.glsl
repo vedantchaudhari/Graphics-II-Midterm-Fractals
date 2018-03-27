@@ -31,7 +31,8 @@ out vec3 vPassView;
 
 void main()
 {
-	gl_Position = uMVP * aPosition;
+	// gl_Position = uEyePos_obj * aNormal;
+	gl_Position = vec4(aTexcoord.xy - 0.5, 0.0, 0.5);
 
 	vPassTexcoord = aTexcoord;
 	vPassNormal = aNormal;

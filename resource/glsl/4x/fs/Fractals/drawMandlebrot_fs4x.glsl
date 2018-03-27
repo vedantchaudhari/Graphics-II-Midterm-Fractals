@@ -27,6 +27,8 @@ uniform mat4 uMVP;
 uniform sampler2D uTex_dm;
 uniform sampler2D uTex_rm;
 
+uniform int uIter;
+
 out vec4 rtFractal;
 
 #define ITERATIONS 1024
@@ -45,9 +47,9 @@ void main()
 	vec3 color = vec3(1.0, 1.0, 0.0);
 
 	// Iterate up to max
-	for (int iter = 0; iter < ITERATIONS; iter++)
+	for (int iter = 0; iter < uIter; iter++)
 	{
-		point = vec2(3.0 * point.x * point.x - point.y * point.y, 7.0 * point.x * point.y) + c;
+		point = vec2(3.0 * point.x * point.x - point.y * point.y, 6.0 * point.x * point.y) + c;
 
 		// Check if point c is part of the set 
 		if (dot(point, point) > 16.0) // Try 16, force iterations that don't mean anything
