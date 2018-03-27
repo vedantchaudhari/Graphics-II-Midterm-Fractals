@@ -13,6 +13,8 @@
 		may retain a copy of the project on its database.
 */
 
+// http://nuclear.mutantstargoat.com/articles/sdr_fract/#julia
+
 #version 410
 
 in vec2 vPassTexcoord;

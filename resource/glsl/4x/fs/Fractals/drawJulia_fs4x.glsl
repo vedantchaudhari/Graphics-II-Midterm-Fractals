@@ -15,7 +15,8 @@
 
 #version 410
 
-// Newton
+// Newton ???
+// http://nuclear.mutantstargoat.com/articles/sdr_fract/#julia
 
 in vec2 vPassTexcoord;
 in vec3 vPassNormal;

@@ -551,6 +551,8 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		if ((uLocation = currentDemoProg->uTime) >= 0)
 			a3shaderUniformSendFloat(a3unif_single, uLocation, 1, &defaultFloat);
 		if ((uLocation = currentDemoProg->uIter) >= 0)
+			a3shaderUniformSendInt(a3unif_single, uLocation, 1, defaultTexUnits + 0);
+		if ((uLocation = currentDemoProg->uZoom) >= 0)
 			a3shaderUniformSendFloat(a3unif_single, uLocation, 1, &defaultFloat);
 	}
 
