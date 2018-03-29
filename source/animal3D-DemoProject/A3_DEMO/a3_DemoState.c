@@ -1126,7 +1126,7 @@ void a3demo_render(const a3_DemoState *demoState)
 			//	- add more demo mode names; 
 			//		if you have fewer names than modes it might crash here
 			"Menger Sponge Fractal",
-			"Mandlebrot Fractal shading program",
+			"Mandelbrot Fractal shading program",
 			"Newton Fractal with Julia set shading program",		// ****TO-DO: Find correct name
 		};
 
