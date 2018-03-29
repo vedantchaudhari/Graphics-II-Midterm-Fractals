@@ -18,9 +18,11 @@ The Menger algorithm recursively divids each face of a cube into 9 squares. We h
 
 ### Mandelbrot Fractal
 ![alt text](https://i.imgur.com/WSWJ6fy.png?1 "Mandelbrot Fractal")
+The Mandelbrot set is 
 
 ### Newton Fractal
 ![alt text](https://i.imgur.com/GLaRPNt.png?1 "Newton Fractal")
+The Newton fractal is a boundary set in the complex plane characterized by applying Newton's method to a fixed polynomial. In this implementation we used a Julia set, which works by dividing the plane into complex regions associated with the root of the polynomial. Furthermore the associated root is mapped to a color ramp in order to generate the required color for that pixel.
 
 Our Project fits into the fractal category because it generates three unique fractal effects, one as a 2D texture and the other two as textures for 3D models. Furthermore, two shaders have a controllable number of iterations and the other uses a color ramp. I think our added functionality meets the project requirements.
 
