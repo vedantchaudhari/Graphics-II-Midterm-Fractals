@@ -12,6 +12,7 @@
 ## Project Description
 For our midterm project we developed shaders for three fractals: **The Mandelbrot Fractal**, **The Newton Fractal** and **The Mengersponge Fractal** as immediate real-time effects. Our goal for the project was to make the Mandelbrot fractal and the Mengersponge interactive by allowing the user to increase or decrease the amount of iterations used by the algorithm. For the Newton fractal our goal was to use a Julia set and generate the fractal colors using a color ramp, then we use the generated fractal to texture models.  
 
+![alt text](https://i.imgur.com/C7Y99tv.png "MengerSponge Fractal")
 ![alt text](https://i.imgur.com/WSWJ6fy.png?1 "Mandelbrot Fractal")
 ![alt text](https://i.imgur.com/GLaRPNt.png?1 "Newton Fractal")
 
