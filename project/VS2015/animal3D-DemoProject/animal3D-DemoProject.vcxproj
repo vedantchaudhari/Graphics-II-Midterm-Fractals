@@ -200,12 +200,14 @@
     <None Include="..\..\..\resource\glsl\4x\fs\drawColorUnif_fs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\fs\Fractals\drawJulia_fs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\fs\Fractals\drawMandlebrot_fs4x.glsl" />
+    <None Include="..\..\..\resource\glsl\4x\fs\Fractals\drawMenger_fs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\02-shading\passDiffuseComponents_transform_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\02-shading\passLambertComponents_transform_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\02-shading\passPhongComponents_transform_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\02-shading\passTexcoord_transform_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\Fractals\passJulia_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\Fractals\passMandlebrotComponents_transform_vs4x.glsl" />
+    <None Include="..\..\..\resource\glsl\4x\vs\Fractals\passMenger_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\passColor_transform_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\passthru_transform_vs4x.glsl" />
   </ItemGroup>

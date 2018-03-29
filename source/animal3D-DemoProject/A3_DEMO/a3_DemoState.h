@@ -238,6 +238,7 @@ extern "C"
 					//	- declare more programs
 					prog_drawJulia[1],					// draw Julia Fractal
 					prog_drawMandlebrot[1],				// draw Mandlebrot Fractal
+					prog_drawMenger[1],
 
 					prog_drawPhong[1],					// draw Phong shading model
 					prog_drawLambert[1],				// draw Lambert shading model

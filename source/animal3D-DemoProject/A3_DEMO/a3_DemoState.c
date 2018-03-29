@@ -399,6 +399,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 			// HW2
 			a3_Shader passJulia_transform_vs[1];
 			a3_Shader passMandlebrotComponents_transform_vs[1];
+			a3_Shader passMenger_transform_vs[1];
 
 			// base
 			a3_Shader passthru_transform_vs[1];
@@ -408,6 +409,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 			// HW2
 			a3_Shader drawJulia_fs[1];
 			a3_Shader drawMandlebrot_fs[1];
+			a3_Shader drawMenger_fs[1];
 
 			// base
 			a3_Shader drawColorUnif_fs[1];
@@ -434,8 +436,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// vs
 		// Fractals
-		{ a3shader_vertex,		1,{ "../../../../resource/glsl/4x/vs/Fractals/passJulia_vs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passJulia_vs4x.glsl" } },
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passMandlebrotComponents_transform_vs4x.glsl" } },
+		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passMenger_vs4x.glsl" } },
 
 		// base
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/passthru_transform_vs4x.glsl" } },
@@ -443,8 +446,9 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// fs
 		// Fractals
-		{ a3shader_fragment,	1,{ "../../../../resource/glsl/4x/fs/Fractals/drawJulia_fs4x.glsl" } },	
+		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawJulia_fs4x.glsl" } },	
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawMandlebrot_fs4x.glsl" } },
+		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawMenger_fs4x.glsl"} },
 
 		// base
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/drawColorUnif_fs4x.glsl" } },
@@ -481,6 +485,11 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 	a3shaderProgramCreate(currentDemoProg->program);
 	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passMandlebrotComponents_transform_vs);
 	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawMandlebrot_fs);
+
+	currentDemoProg = demoState->prog_drawMenger;
+	a3shaderProgramCreate(currentDemoProg->program);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passMenger_transform_vs);
+	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.drawMenger_fs);
 
 	// base programs
 	// color attrib program
@@ -659,7 +668,7 @@ void a3demo_initScene(a3_DemoState *demoState)
 
 	// demo modes
 	demoState->demoMode = 0;
-	demoState->demoModeCount = 2;	// ****TO-DO: change mode count to show off all programs
+	demoState->demoModeCount = 3;	// ****TO-DO: change mode count to show off all programs
 
 	// Initialize fractal variables
 	demoState->fract_iter = 0;
@@ -1116,6 +1125,7 @@ void a3demo_render(const a3_DemoState *demoState)
 			// ****TO-DO: 
 			//	- add more demo mode names; 
 			//		if you have fewer names than modes it might crash here
+			"Menger Sponge Fractal",
 			"Mandlebrot Fractal shading program",
 			"Newton Fractal with Julia set shading program",		// ****TO-DO: Find correct name
 		};
