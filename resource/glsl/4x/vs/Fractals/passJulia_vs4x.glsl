@@ -15,6 +15,9 @@
 
 #version 410
 
+// NONE OF THIS CODE HAS REALLY CHANGED IT IS ALL THE SAME
+// Author: Vedant Chaudhari
+
 layout (location = 0) in vec4 aPosition;
 layout (location = 2) in vec3 aNormal;
 layout (location = 8) in vec2 aTexcoord;
