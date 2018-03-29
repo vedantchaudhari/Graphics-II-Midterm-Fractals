@@ -9,7 +9,7 @@
 
 ***
 ## Project Description
-For our midterm project we developed shaders for two fractals: **The Mandelbrot Fractal** & **The Newton Fractal** as immediate real-time effects. Our goal for the project was to make the Mandelbrot fractal interactive by allowing the user to increase or decrease the amount of iterations used by the algorithm. For the Newton fractal our goal was to use a Julia set and generate the fractal colors using a color ramp, then we use the generated fractal to texture models.
+For our midterm project we developed shaders for two fractals: **The Mandelbrot Fractal** & **The Newton Fractal** as immediate real-time effects. Our goal for the project was to make the Mandelbrot fractal interactive by allowing the user to increase or decrease the amount of iterations used by the algorithm. For the Newton fractal our goal was to use a Julia set and generate the fractal colors using a color ramp, then we use the generated fractal to texture models. 
 Our Project fits into the fractal category because it generates two unique fractal effects, one as a 2D texture and the other as textures for 3D models. Furthermore, one shader has a controllable number of iterations and the other uses a color ramp. I think our added functionality meets the project requirements.
 
 ##### Pertinent Code
