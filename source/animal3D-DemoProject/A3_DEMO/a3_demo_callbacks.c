@@ -375,6 +375,7 @@ A3API void a3test_keyCharPress(a3_DemoState *demoState, int asciiKey)
 		break;
 
 		// Fractal case
+		// Vedant Chaudhari
 	case 'l':
 		demoState->fract_iter = (demoState->fract_iter + 1) % demoState->fract_iterMax;
 		break;
@@ -390,6 +391,7 @@ A3API void a3test_keyCharHold(a3_DemoState *demoState, int asciiKey)
 	// persistent state update
 	a3keyboardSetStateASCII(demoState->keyboard, (char)asciiKey);
 
+	// Vedant Chaudhari
 	switch (asciiKey)
 	{
 		case 'l':

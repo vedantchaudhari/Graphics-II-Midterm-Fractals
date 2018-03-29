@@ -78,6 +78,7 @@ extern "C"
 					uTex_rm,					// Ramp texture
 
 					// Fractal shader uniforms
+					// Vedant Chaudhari
 					uTime,						// Current Time
 					uIter,						// Number of Iterations
 					uZoom;						// Level of zoom (stretch)

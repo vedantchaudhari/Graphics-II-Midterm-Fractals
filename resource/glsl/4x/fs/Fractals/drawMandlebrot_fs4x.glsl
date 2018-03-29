@@ -13,6 +13,8 @@
 		may retain a copy of the project on its database.
 */
 
+// Author: Vedant Chaudhari
+
 // http://nuclear.mutantstargoat.com/articles/sdr_fract/#julia
 
 #version 410
@@ -27,11 +29,9 @@ uniform mat4 uMVP;
 uniform sampler2D uTex_dm;
 uniform sampler2D uTex_rm;
 
-uniform int uIter;
+uniform int uIter;	// Number of iterations
 
 out vec4 rtFractal;
-
-#define ITERATIONS 1024
 
 // Stack Overflow
 

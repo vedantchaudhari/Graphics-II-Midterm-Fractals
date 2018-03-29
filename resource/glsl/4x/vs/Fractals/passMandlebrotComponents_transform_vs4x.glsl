@@ -13,6 +13,8 @@
 		may retain a copy of the project on its database.
 */
 
+// Author: Vedant Chaudhari
+
 #version 410
 
 layout (location = 0) in vec4 aPosition;
@@ -32,6 +34,7 @@ out vec3 vPassView;
 void main()
 {
 	// gl_Position = uEyePos_obj * aNormal;
+	// 2D projection
 	gl_Position = vec4(aTexcoord.xy - 0.5, 0.0, 0.5);
 
 	vPassTexcoord = aTexcoord;

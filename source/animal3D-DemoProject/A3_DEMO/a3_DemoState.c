@@ -373,6 +373,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 		"uTex_rm",
 
 		// Fractal uniforms
+		// Vedant Chaudhari
 		"uTime",
 		"uIter",
 		"uZoom",
@@ -397,8 +398,10 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 			// vertex shaders
 			// HW2
+			// Vedant Chaudhari
 			a3_Shader passJulia_transform_vs[1];
 			a3_Shader passMandlebrotComponents_transform_vs[1];
+			// Aaron Hamilton
 			a3_Shader passMenger_transform_vs[1];
 
 			// base
@@ -407,8 +410,10 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 			// fragment shaders
 			// HW2
+			// Vedant Chaudhari
 			a3_Shader drawJulia_fs[1];
 			a3_Shader drawMandlebrot_fs[1];
+			// Aaron Hamilton
 			a3_Shader drawMenger_fs[1];
 
 			// base
@@ -436,8 +441,10 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// vs
 		// Fractals
+		// Vedant Chaudhari
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passJulia_vs4x.glsl" } },
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passMandlebrotComponents_transform_vs4x.glsl" } },
+		// Aaron Hamilton
 		{ a3shader_vertex,		1, { "../../../../resource/glsl/4x/vs/Fractals/passMenger_vs4x.glsl" } },
 
 		// base
@@ -446,8 +453,10 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// fs
 		// Fractals
+		// Vedant Chaudhari
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawJulia_fs4x.glsl" } },	
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawMandlebrot_fs4x.glsl" } },
+		// Aaron Hamilton
 		{ a3shader_fragment,	1, { "../../../../resource/glsl/4x/fs/Fractals/drawMenger_fs4x.glsl"} },
 
 		// base
@@ -476,6 +485,7 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 	//		they are the building blocks for your programs
 
 	// HW2 programs
+	// Vedant Chaudhari
 	currentDemoProg = demoState->prog_drawJulia;
 	a3shaderProgramCreate(currentDemoProg->program);
 	a3shaderProgramAttachShader(currentDemoProg->program, shaderList.passJulia_transform_vs);
@@ -553,10 +563,12 @@ void a3demo_loadShaders(a3_DemoState *demoState)
 
 		// ****TO-DO: 
 		//	- get locations and set default values for any newly added uniforms
+		// Vedant Chaudhari
 		if ((uLocation = currentDemoProg->uTex_rm) >= 0)
 			a3shaderUniformSendInt(a3unif_single, uLocation, 1, defaultTexUnits + 2);
 
 		// Fractal unifroms
+		// Vedant Chaudhari
 		if ((uLocation = currentDemoProg->uTime) >= 0)
 			a3shaderUniformSendFloat(a3unif_single, uLocation, 1, &defaultFloat);
 		if ((uLocation = currentDemoProg->uIter) >= 0)
@@ -671,6 +683,7 @@ void a3demo_initScene(a3_DemoState *demoState)
 	demoState->demoModeCount = 3;	// ****TO-DO: change mode count to show off all programs
 
 	// Initialize fractal variables
+	// Vedant Chaudhari
 	demoState->fract_iter = 0;
 	demoState->fract_iterMax = 2048;
 
@@ -991,6 +1004,7 @@ void a3demo_render(const a3_DemoState *demoState)
 	//		are required for the active program
 	//	- you may choose a different way to select your active program; 
 	//		the above line selects the program based on the current mode
+	// Vedant Chaudhari
 	a3shaderUniformSendInt(a3unif_single, currentDemoProgram->uIter, 1, &demoState->fract_iter);
 
 	// ground

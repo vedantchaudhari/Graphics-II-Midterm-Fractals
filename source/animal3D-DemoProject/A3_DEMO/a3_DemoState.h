@@ -122,6 +122,7 @@ extern "C"
 		unsigned int demoMode, demoModeCount;
 
 		// Fractal variables
+		// Vedant Chaudhari
 		unsigned int fract_iter, fract_iterMax;
 
 
