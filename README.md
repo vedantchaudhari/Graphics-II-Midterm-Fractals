@@ -8,6 +8,18 @@
 ##### UML Link: <https://drive.google.com/file/d/1CDbDxGHCubsT0LwMnzMnEV2BGgdXEHPn/view?usp=sharing>
 ##### Use master branch, most recent commit  
 
+Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
 ***
 ## Project Description
 For our midterm project we developed shaders for three fractals: **The Mandelbrot Fractal**, **The Newton Fractal** and **The Mengersponge Fractal** as immediate real-time effects. Our goal for the project was to make the Mandelbrot fractal and the Mengersponge interactive by allowing the user to increase or decrease the amount of iterations used by the algorithm. For the Newton fractal our goal was to use a Julia set and generate the fractal colors using a color ramp, then we use the generated fractal to texture models.  
