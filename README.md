@@ -1,4 +1,4 @@
-# EGP-300 Graphics II Midterm: Fractals
+# EGP-300 Graphigs II: Inter Graphics & Animation Programming Midterm: Fractals
 ### Team Members
     * Vedant Chaudhari  
       Contributions: Mandelbrot Fractal and Newton Fractal (with Julia Set)
