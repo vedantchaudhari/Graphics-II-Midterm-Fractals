@@ -1,7 +1,7 @@
 # EGP-300 Graphics II Midterm: Fractals
 ### Team Members
     * Vedant Chaudhari  
-      Contributions: Mandelbrot Fractal and Newton Fractal
+      Contributions: Mandelbrot Fractal and Newton Fractal (with Julia Set)
     * Aaron Hamilton
       Contributions: Mengersponge Fractal
 ##### Repository Link: <https://github.com/vedantchaudhari/Graphics-Midterm-Fractal.git>
@@ -24,7 +24,7 @@ The Newton fractal is a boundary set in the complex plane characterized by apply
 ![alt text](https://i.imgur.com/QbaCP95.png "MengerSponge Fractal")
 The Menger algorithm recursively divids each face of a cube into 9 squares. We have what is called the Mengersponge, which is the limit of this process after an infinite number of iterations. The Mengersponge will change with the viewport, taking into account distance and angle of the camera from the objects in the scene that have the Mengersponge effect on them. These 3D objects are the plane, a torus, a sphere and a cylinder.  
 
-Our Project fits into the fractal category because it generates three unique fractal effects, one as a 2D texture and the other two as textures for 3D models. Furthermore, two shaders have a controllable number of iterations and the other uses a color ramp. I think our added functionality meets the project requirements.
+Our Project fits into the fractal category because it generates three unique fractal effects, one as a 2D texture and the other two as textures for 3D models. Furthermore, two shaders have a controllable number of iterations and the other uses a color ramp. We think our added functionality meets the project requirements.
 
 ##### Pertinent Code
 * drawJulia_fs4x.glsl
