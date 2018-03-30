@@ -14,10 +14,9 @@
 */
 
 // http://www.geeks3d.com/20140201/glsl-menger-sponge-raymarching-code-samples-updated/
+// http://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/
 
 #version 410
-
-#define PI 3.14159265
 
 in vec2 vPassTexcoord;
 in vec3 vPassNormal;
@@ -27,12 +26,9 @@ in vec3 vPassView;
 out vec4 rtFractal;
 
 uniform int uIter;
-uniform float uTime;
 uniform vec4 uEyePos_obj;
 uniform vec4 uLightPos_obj;
 uniform mat4 uMVP;
-uniform vec4 uColor;
-uniform float uZoom;
 
 vec2 objUnion(in vec2 o0, in vec2 o1)
 {
@@ -55,7 +51,7 @@ vec3 floorColor(in vec3 p)
 	if (fract(p.x * 0.2) > 0.2)
 	{
 		if (fract(p.z * 0.2) > 0.2)
-			return vec3(0, 0.1, 0.2);
+			return vec3(0.4, 0.1, 0.2);
 		else
 			return vec3(1.0, 1.0, 1.0);
 	}
@@ -64,7 +60,7 @@ vec3 floorColor(in vec3 p)
 		if (fract(p.z * 0.2) > 0.2)
 			return vec3(1.0, 1.0, 1.0);
 		else
-			return vec3(0.3, 0.0, 0.0);
+			return vec3(0.3, 0.2, 0.0);
 	}
 }
 
@@ -149,7 +145,6 @@ void main()
 	vec3 vrp = vec3(0.0, 0.0, 0.0);
 	vec3 prp = vPassView;
 
-
 	// camera setup
 	vec3 vpn = normalize(vrp - prp);
 	vec3 u = normalize(cross(vuv, vpn));
@@ -167,17 +162,21 @@ void main()
 	vec3 d2 = vec3(0.02, 0.0, 0.0);
 	vec3 c, p, n;
 
+	// raymarch stepping
 	float f = 1.0;
 	for (int i = 0; i < 256; ++i)
 	{
+		// break if we are inside surface screen
 		if ((abs(d.x) < 0.001) || (f > maxD / 2))
 			break;
 
+		// move along view ray
 		f += d.x;
 		p = prp + scp* f;
 		d = distToObj(p);
 	}
 
+	// is point inside scene surface
 	if (f < maxD)
 	{
 		if (d.y == 0.0)
@@ -185,18 +184,17 @@ void main()
 		else
 			c = primitiveColor(p);
 
+		// maximum step we can take without going through the surface
 		n = normalize(
 			vec3(d.x - distToObj(p - E.xyy).x,
 				 d.x - distToObj(p - E.yxy).x,
 				 d.x - distToObj(p - E.yyx).x));
-									// change prp
 		float b = dot(n, normalize(prp - p));
-		rtFractal = vec4((b * c + pow(b, 60.0)) * (1.0 - f * 0.01), 1.0);
+		rtFractal = vec4((b * c + pow(b, 60.0)) * (1.0 - f * 0.01), 1.0) * (uMVP / 1.75);
 	}
 	else
 	{
+		// gone too far
 		rtFractal = vec4(0.0, 1.0, 1.0, 1.0);
 	}
-
-	//rtFractal = vec4(0.0, 0.0, 0.0, 1.0);
 }
